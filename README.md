@@ -1,3 +1,5 @@
-#tlv_parser
+#tlv_message_parser
 
-input is tlv str.
+This is used for parsing tlv message.
+
+You can put tlv data file in data directory.
