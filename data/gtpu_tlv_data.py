@@ -1,0 +1,8 @@
+gtpu_dict = {
+0x01: 'TNL',
+0x08: 'PEERADDR',
+0x0D: 'IPPATH',
+0x010D: 'X2',
+0x67: 'EPGRP',
+0x07: 'USE',
+}

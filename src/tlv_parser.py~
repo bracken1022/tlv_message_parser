@@ -1,0 +1,32 @@
+
+
+class Tlv_Parser(object):
+    
+    def __init__(self, input_str):
+        self.tlv_str = input_str
+
+    def list_to_type(self, input_list):
+        return int(''.join(input_list), 16)
+
+    def list_to_len(self, input_list):
+        return int(''.join(input_list), 16)
+
+    def parse_tlv_str(self):
+        tlv_str = self.tlv_str.replace('\n', '')
+        tlv_list = tlv_str.split(' ')
+
+        return self.parse_tlv_list(tlv_list, len(tlv_list))
+
+    def parse_tlv_list(self, tlv_list, length):
+        tlv_t = self.list_to_type(tlv_list[0:2])
+        tlv_l = self.list_to_len(tlv_list[2:4])
+
+        if 4 == tlv_l:
+            newlen = length - 8
+            tlv_v = tlv_list[4:4+tlv_l]
+        else:
+            tlv_v = tlv_list[4:length]
+            newlen = length - 4
+
+        print tlv_t, tlv_l, tlv_v
+        return self.parse_tlv_list(tlv_list, newlen)
